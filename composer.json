@@ -1,0 +1,18 @@
+{
+    "name": "crowdsdom/php-sdk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Chung",
+            "email": "touhonoob@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.1",
+        "guzzlehttp/promises": "^1.0",
+        "guzzlehttp/psr7": "^1.2",
+        "mtdowling/jmespath.php": "^2.2"
+    }
+}
