@@ -10,12 +10,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Crowdsdom\\": "src/"
+            "Crowdsdom\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Crowdsdom\\Tests\\": "tests/"
+            "Crowdsdom\\Tests\\": "tests"
         }
     },
     "require": {
