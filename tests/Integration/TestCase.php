@@ -6,7 +6,7 @@ use Crowdsdom\Client\Client;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-    const CREDENTIALS_FILE = __DIR__ . '/.env';
+    const CREDENTIALS_FILE = '.env';
     const ID_KEY = 'CROWDSDOM_ID';
     const SECRET_KEY = 'CROWDSDOM_SECRET';
 
@@ -60,11 +60,13 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 
     private function getCredentialsFromFile()
     {
-        if (!file_exists((self::CREDENTIALS_FILE))) {
+        $credentialsFile = __DIR__ . '/' . self::CREDENTIALS_FILE;
+
+        if (!file_exists(($credentialsFile))) {
             return false;
         }
 
-        $settings = parse_ini_file(self::CREDENTIALS_FILE);
+        $settings = parse_ini_file($credentialsFile);
 
         if (!isset($settings[self::ID_KEY]) || !isset($settings[self::SECRET_KEY])) {
             return false;
