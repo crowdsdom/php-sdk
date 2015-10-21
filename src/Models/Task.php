@@ -2,7 +2,7 @@
 
 namespace Crowdsdom\Models;
 
-class Task extends Model
+class Task extends Base\Task
 {
 
 }

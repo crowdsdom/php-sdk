@@ -2,7 +2,7 @@
 
 namespace Crowdsdom\Models;
 
-class JobType extends Model
+class JobType extends Base\JobType
 {
 
 }
