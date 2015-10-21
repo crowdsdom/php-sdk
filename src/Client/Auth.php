@@ -21,7 +21,7 @@ class Auth
     protected $client;
 
     /**
-     * TODO: adapt an oauth library
+     * TODO: adapt an oauth2 library
      * @var array
      */
     protected $accessToken;
@@ -45,6 +45,7 @@ class Auth
 
     public function getAccessToken()
     {
+        // lazy load
         if (isset($this->accessToken)) {
             return $this->accessToken;
         }
