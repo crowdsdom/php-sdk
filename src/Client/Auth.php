@@ -34,13 +34,14 @@ class Auth
     /**
      * Auth constructor.
      * @param Client $client
+     * @param array $options
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, array $options = [])
     {
         $this->client = $client;
-        $this->guzzle = new GuzzleClient([
+        $this->guzzle = new GuzzleClient(array_merge([
             'base_uri' => $client->getAuthHost()
-        ]);
+        ], $options));
     }
 
     public function getAccessToken()

@@ -16,7 +16,9 @@ class AuthTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->auth = new Auth($this->client);
+        $this->auth = new Auth($this->client, [
+            'verify' => false
+        ]);
     }
 
     public function testGetAccessToken()
