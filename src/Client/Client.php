@@ -52,9 +52,9 @@ class Client
     public function __construct(
         $clientId,
         $clientSecret,
-        $version = '',
-        $authHost = 'http://account.crowdsdom.com',
-        $apiHost = 'https://developer.crowdsdom.com'
+        $version = 'v1',
+        $authHost = 'https://account.crowdsdom.com',
+        $apiHost = 'https://api.crowdsdom.com'
     ) {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;

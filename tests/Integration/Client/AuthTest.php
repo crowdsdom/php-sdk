@@ -21,8 +21,6 @@ class AuthTest extends TestCase
 
     public function testGetAccessToken()
     {
-        $this->markTestSkipped('temporally skip without sandbox api key');
-
         $token = $this->auth->getAccessToken();
         $this->assertInternalType('array', $token);
         $this->assertArrayHasKey('access_token', $token);
