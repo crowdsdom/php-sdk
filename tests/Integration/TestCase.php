@@ -32,10 +32,14 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         parent::setUp();
         $this->getCredentials();
 
-        $authClient = new Client(Crowdsdom::DEFAULT_AUTH_HOST);
+        $authClient = new Client(Crowdsdom::DEFAULT_AUTH_HOST, [
+            'verify' => false
+        ]);
         $this->auth = new Auth($authClient, $this->clientId, $this->clientSecret);
 
-        $this->client = Client::makeByAuth($this->auth, Crowdsdom::DEFAULT_API_HOST, Crowdsdom::DEFAULT_API_VERSION);
+        $this->client = Client::makeByAuth($this->auth, Crowdsdom::DEFAULT_API_HOST, Crowdsdom::DEFAULT_API_VERSION, [
+            'verify' => false
+        ]);
     }
 
     private function getCredentials()

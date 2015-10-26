@@ -51,17 +51,18 @@ class Client
      * @param Auth $auth
      * @param string $host
      * @param string $version
+     * @param array $guzzleOptions
      * @return Client
      */
-    public static function makeByAuth(Auth $auth, $host, $version = '')
+    public static function makeByAuth(Auth $auth, $host, $version = '', array $guzzleOptions = [])
     {
         $stack = HandlerStack::create();
         $stack->push($auth->authMiddleware());
         $stack->push(static::versionMiddleware($version));
 
-        return new Client($host, $version, [
+        return new Client($host, $version, array_merge([
             'handler' => $stack
-        ]);
+        ], $guzzleOptions));
     }
 
     public static function versionMiddleware($version)
