@@ -1,8 +1,6 @@
 <?php
 namespace Crowdsdom\Labor\Models\Base;
 
-use Crowdsdom\Labor\Models\Model;
-
 class Job extends Model
 {
     /** @var string */

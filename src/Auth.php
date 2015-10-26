@@ -5,6 +5,7 @@ namespace Crowdsdom;
 use Crowdsdom\Client\API;
 use Crowdsdom\Client\Client;
 use Crowdsdom\Client\Exceptions\AuthException;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * Class Auth
@@ -68,5 +69,16 @@ class Auth extends API
         $this->accessToken = json_decode($response->getBody()->getContents(), true);
 
         return $this->accessToken;
+    }
+
+    public function authMiddleware()
+    {
+        $accessToken = $this->getAccessToken();
+        return function (callable $handler) use ($accessToken) {
+            return function (RequestInterface $request, array $options) use ($handler, $accessToken) {
+                $request = $request->withHeader('Authorization', $accessToken['access_token']['id']);
+                return $handler($request, $options);
+            };
+        };
     }
 }

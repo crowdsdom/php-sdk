@@ -2,7 +2,9 @@
 
 namespace Crowdsdom\Tests\Integration;
 
+use Crowdsdom\Auth;
 use Crowdsdom\Client\Client;
+use Crowdsdom\Crowdsdom;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
@@ -27,7 +29,13 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        parent::setUp();
         $this->getCredentials();
+
+        $authClient = new Client(Crowdsdom::DEFAULT_AUTH_HOST);
+        $this->auth = new Auth($authClient, $this->clientId, $this->clientSecret);
+
+        $this->client = Client::makeByAuth($this->auth, Crowdsdom::DEFAULT_API_HOST, Crowdsdom::DEFAULT_API_VERSION);
     }
 
     private function getCredentials()
