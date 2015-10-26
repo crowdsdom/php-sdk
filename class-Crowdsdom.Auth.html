@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="generator" content="ApiGen 2.8.0">
 
-	<title>Class Crowdsdom\Client\Auth</title>
+	<title>Class Crowdsdom\Auth</title>
 
 	<script type="text/javascript" src="resources/combined.js?117538352"></script>
-	<script type="text/javascript" src="elementlist.js?1472475986"></script>
+	<script type="text/javascript" src="elementlist.js?949269088"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360">
 
 </head>
@@ -23,16 +23,18 @@
 			<ul>
 				<li class="active"><a href="namespace-Crowdsdom.html">Crowdsdom<span></span></a>
 						<ul>
-				<li class="active"><a href="namespace-Crowdsdom.Client.html">Client<span></span></a>
+				<li><a href="namespace-Crowdsdom.Client.html">Client<span></span></a>
 						<ul>
 				<li><a href="namespace-Crowdsdom.Client.Exceptions.html">Exceptions</a>
 						</li>
 							</ul></li>
-				<li><a href="namespace-Crowdsdom.Models.html">Models<span></span></a>
+				<li><a href="namespace-Crowdsdom.Labor.html">Labor<span></span></a>
 						<ul>
-				<li><a href="namespace-Crowdsdom.Models.Base.html">Base</a>
+				<li><a href="namespace-Crowdsdom.Labor.Models.html">Models<span></span></a>
+						<ul>
+				<li><a href="namespace-Crowdsdom.Labor.Models.Base.html">Base</a>
 						</li>
-							</ul></li></ul></li>
+							</ul></li></ul></li></ul></li>
 				<li><a href="namespace-PHP.html">PHP</a>
 						</li>
 			</ul>
@@ -44,8 +46,9 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Crowdsdom.Client.Auth.html">Auth</a></li>
-				<li><a href="class-Crowdsdom.Client.Client.html">Client</a></li>
+				<li class="active"><a href="class-Crowdsdom.Auth.html">Auth</a></li>
+				<li><a href="class-Crowdsdom.Crowdsdom.html">Crowdsdom</a></li>
+				<li><a href="class-Crowdsdom.Labor.html">Labor</a></li>
 			</ul>
 
 
@@ -73,7 +76,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-Crowdsdom.Client.html" title="Summary of Crowdsdom\Client"><span>Namespace</span></a>
+				<a href="namespace-Crowdsdom.html" title="Summary of Crowdsdom"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -97,6 +100,20 @@
 
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-Crowdsdom.Client.API.html"><span>Crowdsdom\Client\API</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Crowdsdom\Auth</span></b>			
+			
+			
+		</dd>
+	</dl>
 
 
 
@@ -108,10 +125,10 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> <a href="namespace-Crowdsdom.html">Crowdsdom</a>\<a href="namespace-Crowdsdom.Client.html">Client</a><br>
+		<b>Namespace:</b> <a href="namespace-Crowdsdom.html">Crowdsdom</a><br>
 		<b>Package:</b> Crowdsdom\Client<br>
 
-		<b>Located at</b> <a href="source-class-Crowdsdom.Client.Auth.html#8-69" title="Go to source code">Client/Auth.php</a><br>
+		<b>Located at</b> <a href="source-class-Crowdsdom.Auth.html#10-84" title="Go to source code">Auth.php</a><br>
 	</div>
 
 
@@ -129,7 +146,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Auth.html#34-44" title="Go to source code">__construct</a>( <span><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code> <var>$client</var></span> )</code>
+		<code><a href="source-class-Crowdsdom.Auth.html#36-47" title="Go to source code">__construct</a>( <span><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code> <var>$client</var></span>, <span>string <var>$clientId</var></span>, <span>string <var>$clientSecret</var></span> )</code>
 
 		<div class="description short">
 			
@@ -147,11 +164,17 @@
 				<div class="list"><dl>
 					<dt><var>$client</var></dt>
 					<dd><code><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code></code><br>$client</dd>
+					<dt><var>$clientId</var></dt>
+					<dd><code>string</code><br>$clientId</dd>
+					<dt><var>$clientSecret</var></dt>
+					<dd><code>string</code><br>$clientSecret</dd>
 				</dl></div>
 
 
 
 
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Crowdsdom.Client.API.html#___construct">Crowdsdom\Client\API::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -167,7 +190,36 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAccessToken">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Auth.html#46-68" title="Go to source code">getAccessToken</a>( )</code>
+		<code><a href="source-class-Crowdsdom.Auth.html#50-72" title="Go to source code">getAccessToken</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="authMiddleware" id="_authMiddleware">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_authMiddleware">#</a>
+		<code><a href="source-class-Crowdsdom.Auth.html#74-83" title="Go to source code">authMiddleware</a>( )</code>
 
 		<div class="description short">
 			
@@ -200,7 +252,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Client.Auth.html#15" title="Go to source code"><b>ENDPOINT</b></a>
+				<a href="source-class-Crowdsdom.Auth.html#17" title="Go to source code"><b>ENDPOINT</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'/oauth/token'</span></code></td>
 		<td class="description"><div>
@@ -220,7 +272,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Client.Auth.html#16" title="Go to source code"><b>GRANT_TYPE</b></a>
+				<a href="source-class-Crowdsdom.Auth.html#18" title="Go to source code"><b>GRANT_TYPE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'client_credentials'</span></code></td>
 		<td class="description"><div>
@@ -243,29 +295,6 @@
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="client" id="$client">
-		<td class="attributes"><code>
-			protected  
-			<code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code>
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Crowdsdom.Client.Auth.html#18-21" title="Go to source code"><var>$client</var></a>
-		</td>
-		<td class="value"><code></code></td>
-		<td class="description"><div>
-			<a href="#$client" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</div></td>
-	</tr>
 	<tr data-order="accessToken" id="$accessToken">
 		<td class="attributes"><code>
 			protected  
@@ -273,7 +302,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Client.Auth.html#23-27" title="Go to source code"><var>$accessToken</var></a>
+				<a href="source-class-Crowdsdom.Auth.html#20-24" title="Go to source code"><var>$accessToken</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -293,18 +322,41 @@
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="guzzle" id="$guzzle">
+	<tr data-order="clientId" id="$clientId">
 		<td class="attributes"><code>
 			protected  
-			GuzzleHttp\Client
+			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Client.Auth.html#29-32" title="Go to source code"><var>$guzzle</var></a>
+				<a href="source-class-Crowdsdom.Auth.html#26-29" title="Go to source code"><var>$clientId</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$guzzle" class="anchor">#</a>
+			<a href="#$clientId" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="clientSecret" id="$clientSecret">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Auth.html#31-34" title="Go to source code"><var>$clientSecret</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$clientSecret" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -318,6 +370,14 @@
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Crowdsdom.Client.API.html#properties">Crowdsdom\Client\API</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Crowdsdom.Client.API.html#$client"><var>$client</var></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
