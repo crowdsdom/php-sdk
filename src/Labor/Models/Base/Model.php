@@ -24,12 +24,34 @@ abstract class Model
 
     /**
      * @param array $data
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return array|null
      */
     public function create(array $data)
     {
-        return $this->client->getGuzzle()->request('POST', static::ENDPOINT, [
+        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT, [
             'json' => $data
         ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     * @return array|null
+     * @throws \RuntimeException
+     */
+    public function find()
+    {
+        $response = $this->client->getGuzzle()->request('GET', static::ENDPOINT);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     * @param string $id
+     * @return array|null
+     * @throws \RuntimeException
+     */
+    public function findById($id)
+    {
+        $response = $this->client->getGuzzle()->request('GET', static::ENDPOINT . "/$id");
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

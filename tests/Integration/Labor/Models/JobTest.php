@@ -19,4 +19,31 @@ class JobTest extends TestCase
         }
     }
 
+    public function testFind()
+    {
+        $job = new Job($this->client);
+        $jobs = $job->find();
+        $this->assertInternalType('array', $jobs);
+    }
+
+    public function testFindById()
+    {
+        try {
+            $job = new Job($this->client);
+            $job->findById("abc");
+        } catch (\GuzzleHttp\Exception\ClientException $exception) {
+            $this->assertEquals(404, $exception->getResponse()->getStatusCode());
+        }
+    }
+
+    public function testAccept()
+    {
+        try {
+            $job = new Job($this->client);
+            $job->accept("abc");
+        } catch (\GuzzleHttp\Exception\ClientException $exception) {
+            $this->assertEquals(401, $exception->getResponse()->getStatusCode());
+        }
+    }
+
 }
