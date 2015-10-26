@@ -1,6 +1,6 @@
 <?php
 
-namespace Crowdsdom\Models;
+namespace Crowdsdom\Labor\Models;
 
 abstract class Model
 {

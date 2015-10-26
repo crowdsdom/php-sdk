@@ -1,24 +1,20 @@
 <?php
 
-namespace Crowdsdom\Client;
+namespace Crowdsdom;
 
+use Crowdsdom\Client\API;
+use Crowdsdom\Client\Client;
 use Crowdsdom\Client\Exceptions\AuthException;
-use GuzzleHttp\Client as GuzzleClient;
 
 /**
  * Class Auth
  * @package Crowdsdom\Client
  */
-class Auth
+class Auth extends API
 {
 
     const ENDPOINT = '/oauth/token';
     const GRANT_TYPE = 'client_credentials';
-
-    /**
-     * @var Client
-     */
-    protected $client;
 
     /**
      * TODO: adapt an oauth2 library
@@ -27,22 +23,28 @@ class Auth
     protected $accessToken;
 
     /**
-     * @var GuzzleClient
+     * @var string
      */
-    protected $guzzle;
+    protected $clientId;
+
+    /**
+     * @var string
+     */
+    protected $clientSecret;
 
     /**
      * Auth constructor.
      * @param Client $client
-     * @param array $options
+     * @param string $clientId
+     * @param string $clientSecret
      */
-    public function __construct(Client $client, array $options = [])
+    public function __construct(Client $client, $clientId, $clientSecret)
     {
-        $this->client = $client;
-        $this->guzzle = new GuzzleClient(array_merge([
-            'base_uri' => $client->getAuthHost()
-        ], $options));
+        parent::__construct($client);
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
     }
+
 
     public function getAccessToken()
     {
@@ -51,11 +53,11 @@ class Auth
             return $this->accessToken;
         }
 
-        $response = $this->guzzle->request('POST', self::ENDPOINT, [
+        $response = $this->client->getGuzzle()->request('POST', self::ENDPOINT, [
             'json' => [
                 'grant_type' => self::GRANT_TYPE,
-                'client_id' => $this->client->getClientId(),
-                'client_secret' => $this->client->getClientSecret(),
+                'client_id' => $this->clientId,
+                'client_secret' => $this->clientSecret,
             ]
         ]);
 

@@ -28,12 +28,6 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->getCredentials();
-        $this->getClient();
-    }
-
-    private function getClient()
-    {
-        $this->client = new Client($this->clientId, $this->clientSecret);
     }
 
     private function getCredentials()

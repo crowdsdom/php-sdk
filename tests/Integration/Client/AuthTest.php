@@ -2,7 +2,9 @@
 
 namespace Crowdsdom\Tests\Integration\Client;
 
-use Crowdsdom\Client\Auth;
+use Crowdsdom\Auth;
+use Crowdsdom\Client\Client;
+use Crowdsdom\Crowdsdom;
 use Crowdsdom\Tests\Integration\TestCase;
 
 class AuthTest extends TestCase
@@ -16,9 +18,9 @@ class AuthTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->auth = new Auth($this->client, [
-            'verify' => false
-        ]);
+
+        $this->client = new Client(Crowdsdom::DEFAULT_AUTH_HOST);
+        $this->auth = new Auth($this->client, $this->clientId, $this->clientSecret);
     }
 
     public function testGetAccessToken()

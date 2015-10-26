@@ -2,8 +2,6 @@
 
 namespace Crowdsdom\Client;
 
-use GuzzleHttp\Client as GuzzleClient;
-
 /**
  * Class Client
  * @package Crowdsdom\Client
@@ -14,12 +12,7 @@ class Client
     /**
      * @var string
      */
-    protected $clientId;
-
-    /**
-     * @var string
-     */
-    protected $clientSecret;
+    protected $host;
 
     /**
      * @var string
@@ -27,83 +20,27 @@ class Client
     protected $version;
 
     /**
-     * @var string
-     */
-    protected $authHost;
-
-    /**
-     * @var string
-     */
-    protected $apiHost;
-
-    /**
-     * @var GuzzleClient
-     */
-    protected $guzzle;
-
-    /**
      * Client constructor.
-     * @param string $clientId
-     * @param string $clientSecret
-     * @param string $version
-     * @param string $authHost
-     * @param string $apiHost
+     * @param $host
+     * @param $version
+     * @param array $guzzleOptions
      */
-    public function __construct(
-        $clientId,
-        $clientSecret,
-        $version = 'v1',
-        $authHost = 'https://account.crowdsdom.com',
-        $apiHost = 'https://api.crowdsdom.com'
-    ) {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+    public function __construct($host, $version = '', array $guzzleOptions = [])
+    {
+        $this->host = $host;
         $this->version = $version;
-        $this->authHost = $authHost;
-        $this->apiHost = $apiHost;
 
-        $this->guzzle = new GuzzleClient([
-            'base_uri' => $apiHost
-        ]);
+        $this->guzzle = new \GuzzleHttp\Client(array_merge([
+            'base_uri' => $host . ($version ? "/$version" : '')
+        ], $guzzleOptions));
     }
 
     /**
-     * @return string
+     * @return \GuzzleHttp\Client
      */
-    public function getAuthHost()
+    public function getGuzzle()
     {
-        return $this->authHost;
+        return $this->guzzle;
     }
 
-    /**
-     * @return string
-     */
-    public function getApiHost()
-    {
-        return $this->apiHost;
-    }
-
-    /**
-     * @return string
-     */
-    public function getClientSecret()
-    {
-        return $this->clientSecret;
-    }
-
-    /**
-     * @return string
-     */
-    public function getClientId()
-    {
-        return $this->clientId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
 }
