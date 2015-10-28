@@ -8,9 +8,11 @@ use Crowdsdom\Crowdsdom;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-    const CREDENTIALS_FILE = '.env';
+    const ENV_FILE = '.env';
     const ID_KEY = 'CROWDSDOM_ID';
     const SECRET_KEY = 'CROWDSDOM_SECRET';
+    const API_KEY = 'CROWDSDOM_API';
+    const AUTH_KEY = 'CROWDSDOM_AUTH';
 
     /**
      * @var string
@@ -23,6 +25,16 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     protected $clientSecret;
 
     /**
+     * @var string
+     */
+    protected $apiHost;
+
+    /**
+     * @var string
+     */
+    protected $authHost;
+
+    /**
      * @var Client
      */
     protected $client;
@@ -30,26 +42,30 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->getCredentials();
+        $this->getEnv();
 
-        $authClient = new Client(Crowdsdom::DEFAULT_AUTH_HOST, [
-            'verify' => false
-        ]);
-        $this->auth = new Auth($authClient, $this->clientId, $this->clientSecret);
+        if (!isset($this->auth)) {
+            $authClient = new Client($this->authHost, [
+                'verify' => false
+            ]);
+            $this->auth = new Auth($authClient, $this->clientId, $this->clientSecret);
+        }
 
-        $this->client = Client::makeByAuth($this->auth, Crowdsdom::DEFAULT_API_HOST, Crowdsdom::DEFAULT_API_VERSION, [
+        $this->client = Client::makeByAuth($this->auth, $this->apiHost, Crowdsdom::DEFAULT_API_VERSION, [
             'verify' => false
         ]);
     }
 
-    private function getCredentials()
+    private function getEnv()
     {
-        if (!$this->getCredentialsFromEnv() && !$this->getCredentialsFromFile()) {
+        $this->setEnvFromFile();
+
+        if (!$this->getSettingsFromEnv()) {
             throw new \RuntimeException("Please set CROWDSDOM_ID & CROWDSDOM_SECRET for integration tests");
         }
     }
 
-    private function getCredentialsFromEnv()
+    private function getSettingsFromEnv()
     {
         $id = getenv(self::ID_KEY);
         $secret = getenv(self::SECRET_KEY);
@@ -61,12 +77,15 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         $this->clientId = $id;
         $this->clientSecret = $secret;
 
+        $this->apiHost = getenv(self::API_KEY) ?: Crowdsdom::DEFAULT_API_HOST;
+        $this->authHost = getenv(self::AUTH_KEY) ?: Crowdsdom::DEFAULT_AUTH_HOST;
+
         return true;
     }
 
-    private function getCredentialsFromFile()
+    private function setEnvFromFile()
     {
-        $credentialsFile = __DIR__ . '/' . self::CREDENTIALS_FILE;
+        $credentialsFile = __DIR__ . '/' . self::ENV_FILE;
 
         if (!file_exists(($credentialsFile))) {
             return false;
@@ -74,12 +93,9 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 
         $settings = parse_ini_file($credentialsFile);
 
-        if (!isset($settings[self::ID_KEY]) || !isset($settings[self::SECRET_KEY])) {
-            return false;
+        foreach ($settings as $key => $value) {
+            putenv("$key=$value");
         }
-
-        $this->clientId = $settings[self::ID_KEY];
-        $this->clientSecret = $settings[self::SECRET_KEY];
 
         return true;
     }
