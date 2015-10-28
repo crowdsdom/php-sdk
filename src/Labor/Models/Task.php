@@ -8,36 +8,28 @@ class Task extends Base\Task
 
     public function create(array $data)
     {
-        throw new \RuntimeException("Not Implemented");
+        throw new \BadMethodCallException;
     }
 
     public function find()
     {
-        throw new \RuntimeException("Not Implemented");
+        throw new \BadMethodCallException;
     }
 
     public function findById($id)
     {
-        throw new \RuntimeException("Not Implemented");
+        throw new \BadMethodCallException;
     }
 
-    public function approve()
+    public function approve($id)
     {
-
+        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/approve", []);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function reject()
+    public function reject($id)
     {
-
-    }
-
-    public function submit()
-    {
-
-    }
-
-    public function returns()
-    {
-
+        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/reject", []);
+        return json_decode($response->getBody()->getContents(), true);
     }
 }
