@@ -23,13 +23,13 @@ class Task extends Base\Task
 
     public function approve($id)
     {
-        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/approve", []);
-        return json_decode($response->getBody()->getContents(), true);
+        $this->response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/approve", []);
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 
     public function reject($id)
     {
-        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/reject", []);
-        return json_decode($response->getBody()->getContents(), true);
+        $this->response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/reject", []);
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 }
