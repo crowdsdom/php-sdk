@@ -1,6 +1,6 @@
 <?php
 
-namespace Crowdsdom\Labor\Models\Base;
+namespace Crowdsdom\Labor\Models;
 
 use Crowdsdom\Client\Client;
 use GuzzleHttp\Psr7\Response;
