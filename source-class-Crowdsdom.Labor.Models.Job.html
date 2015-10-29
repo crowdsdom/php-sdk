@@ -8,7 +8,7 @@
 	<title>File Labor/Models/Job.php</title>
 
 	<script type="text/javascript" src="resources/combined.js?117538352"></script>
-	<script type="text/javascript" src="elementlist.js?949269088"></script>
+	<script type="text/javascript" src="elementlist.js?678007210"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360">
 
 </head>
@@ -49,6 +49,7 @@
 			<ul>
 				<li class="active"><a href="class-Crowdsdom.Labor.Models.Job.html">Job</a></li>
 				<li><a href="class-Crowdsdom.Labor.Models.JobType.html">JobType</a></li>
+				<li><a href="class-Crowdsdom.Labor.Models.Model.html">Model</a></li>
 				<li><a href="class-Crowdsdom.Labor.Models.Task.html">Task</a></li>
 			</ul>
 
@@ -102,8 +103,8 @@
 </span><span id="8" class="l"><a class="l" href="#8"> 8: </a>
 </span><span id="9" class="l"><a class="l" href="#9"> 9: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_tasks" href="#_tasks">tasks</a>(<span class="php-var">$id</span>)
 </span><span id="10" class="l"><a class="l" href="#10">10: </a>    {
-</span><span id="11" class="l"><a class="l" href="#11">11: </a>        <span class="php-var">$response</span> = <span class="php-var">$this</span>-&gt;client-&gt;getGuzzle()-&gt;request(<span class="php-quote">'GET'</span>, <span class="php-keyword1">static</span>::ENDPOINT . <span class="php-quote">&quot;/</span><span class="php-var">{$id}</span><span class="php-quote">/tasks&quot;</span>, []);
-</span><span id="12" class="l"><a class="l" href="#12">12: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">json_decode</span>(<span class="php-var">$response</span>-&gt;getBody()-&gt;getContents(), <span class="php-keyword1">true</span>);
+</span><span id="11" class="l"><a class="l" href="#11">11: </a>        <span class="php-var">$this</span>-&gt;response = <span class="php-var">$this</span>-&gt;client-&gt;getGuzzle()-&gt;request(<span class="php-quote">'GET'</span>, <span class="php-keyword1">static</span>::ENDPOINT . <span class="php-quote">&quot;/</span><span class="php-var">{$id}</span><span class="php-quote">/tasks&quot;</span>, []);
+</span><span id="12" class="l"><a class="l" href="#12">12: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">json_decode</span>(<span class="php-var">$this</span>-&gt;response-&gt;getBody()-&gt;getContents(), <span class="php-keyword1">true</span>);
 </span><span id="13" class="l"><a class="l" href="#13">13: </a>    }
 </span><span id="14" class="l"><a class="l" href="#14">14: </a>}
 </span><span id="15" class="l"><a class="l" href="#15">15: </a></span></code></pre>
