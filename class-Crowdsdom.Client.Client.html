@@ -113,7 +113,7 @@
 		<b>Namespace:</b> <a href="namespace-Crowdsdom.html">Crowdsdom</a>\<a href="namespace-Crowdsdom.Client.html">Client</a><br>
 		<b>Package:</b> Crowdsdom\Client<br>
 
-		<b>Located at</b> <a href="source-class-Crowdsdom.Client.Client.html#9-81" title="Go to source code">Client/Client.php</a><br>
+		<b>Located at</b> <a href="source-class-Crowdsdom.Client.Client.html#10-76" title="Go to source code">Client/Client.php</a><br>
 	</div>
 
 
@@ -131,7 +131,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Client.html#26-40" title="Go to source code">__construct</a>( <span>string <var>$host</var></span>, <span>string <var>$version</var> = <span class="php-quote">''</span></span>, <span>array <var>$guzzleOptions</var> = []</span> )</code>
+		<code><a href="source-class-Crowdsdom.Client.Client.html#32-53" title="Go to source code">__construct</a>( <span>Crowdsdom\Crowdsdom\Auth <var>&amp; $auth</var></span>, <span>string <var>$host</var></span>, <span>array <var>$version</var> = Crowdsdom\Client\Crowdsdom::DEFAULT_API_VERSION</span>, <span>array <var>$guzzleOptions</var> = []</span> )</code>
 
 		<div class="description short">
 			
@@ -147,12 +147,14 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$host</var></dt>
+					<dt><var>$auth</var></dt>
 					<dd><code>string</code><br>$host</dd>
-					<dt><var>$version</var></dt>
+					<dt><var>$host</var></dt>
 					<dd><code>string</code><br>$version</dd>
-					<dt><var>$guzzleOptions</var></dt>
+					<dt><var>$version</var></dt>
 					<dd><code>array</code><br>$guzzleOptions</dd>
+					<dt><var>$guzzleOptions</var></dt>
+					<dd></dd>
 				</dl></div>
 
 
@@ -173,7 +175,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getGuzzle">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Client.html#42-48" title="Go to source code">getGuzzle</a>( )</code>
+		<code><a href="source-class-Crowdsdom.Client.Client.html#55-61" title="Go to source code">getGuzzle</a>( )</code>
 
 		<div class="description short">
 			
@@ -195,50 +197,6 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="makeByAuth" id="_makeByAuth">
-
-		<td class="attributes"><code>
-			 public static
-			<code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_makeByAuth">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Client.html#50-66" title="Go to source code">makeByAuth</a>( <span><code><a href="class-Crowdsdom.Auth.html">Crowdsdom\Auth</a></code> <var>$auth</var></span>, <span>string <var>$host</var></span>, <span>string <var>$version</var> = <span class="php-quote">''</span></span>, <span>array <var>$guzzleOptions</var> = []</span> )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$auth</var></dt>
-					<dd><code><code><a href="class-Crowdsdom.Auth.html">Crowdsdom\Auth</a></code></code><br>$auth</dd>
-					<dt><var>$host</var></dt>
-					<dd><code>string</code><br>$host</dd>
-					<dt><var>$version</var></dt>
-					<dd><code>string</code><br>$version</dd>
-					<dt><var>$guzzleOptions</var></dt>
-					<dd><code>array</code><br>$guzzleOptions</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code></code><br>
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="versionMiddleware" id="_versionMiddleware">
 
 		<td class="attributes"><code>
@@ -250,7 +208,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_versionMiddleware">#</a>
-		<code><a href="source-class-Crowdsdom.Client.Client.html#68-79" title="Go to source code">versionMiddleware</a>( <span>mixed <var>$version</var></span> )</code>
+		<code><a href="source-class-Crowdsdom.Client.Client.html#63-74" title="Go to source code">versionMiddleware</a>( <span>mixed <var>$version</var></span> )</code>
 
 		<div class="description short">
 			
@@ -290,7 +248,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Client.Client.html#16-19" title="Go to source code"><var>$host</var></a>
+				<a href="source-class-Crowdsdom.Client.Client.html#17-20" title="Go to source code"><var>$host</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -313,11 +271,34 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Client.Client.html#21-24" title="Go to source code"><var>$version</var></a>
+				<a href="source-class-Crowdsdom.Client.Client.html#22-25" title="Go to source code"><var>$version</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$version" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="auth" id="$auth">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Crowdsdom.Auth.html">Crowdsdom\Auth</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Client.Client.html#27-30" title="Go to source code"><var>$auth</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$auth" class="anchor">#</a>
 
 			<div class="description short">
 				

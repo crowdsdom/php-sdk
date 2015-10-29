@@ -109,7 +109,7 @@
 		<b>Namespace:</b> <a href="namespace-Crowdsdom.html">Crowdsdom</a><br>
 		
 
-		<b>Located at</b> <a href="source-class-Crowdsdom.Crowdsdom.html#5-42" title="Go to source code">Crowdsdom.php</a><br>
+		<b>Located at</b> <a href="source-class-Crowdsdom.Crowdsdom.html#7-73" title="Go to source code">Crowdsdom.php</a><br>
 	</div>
 
 
@@ -127,7 +127,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Crowdsdom.Crowdsdom.html#27-41" title="Go to source code">__construct</a>( <span>string <var>$authHost</var> = <code><a href="class-Crowdsdom.Crowdsdom.html#DEFAULT_AUTH_HOST">Crowdsdom\Crowdsdom::<b>DEFAULT_AUTH_HOST</b></a></code></span>, <span>string <var>$apiHost</var> = <code><a href="class-Crowdsdom.Crowdsdom.html#DEFAULT_API_HOST">Crowdsdom\Crowdsdom::<b>DEFAULT_API_HOST</b></a></code></span>, <span>string <var>$apiVersion</var> = self::DEFAULT_API_VERSION </span> )</code>
+		<code><a href="source-class-Crowdsdom.Crowdsdom.html#44-63" title="Go to source code">__construct</a>( <span>string <var>$clientId</var></span>, <span>string <var>$clientSecret</var></span>, <span>string <var>$authHost</var> = <code><a href="class-Crowdsdom.Crowdsdom.html#DEFAULT_AUTH_HOST">Crowdsdom\Crowdsdom::<b>DEFAULT_AUTH_HOST</b></a></code></span>, <span>mixed <var>$apiHost</var> = <code><a href="class-Crowdsdom.Crowdsdom.html#DEFAULT_API_HOST">Crowdsdom\Crowdsdom::<b>DEFAULT_API_HOST</b></a></code></span>, <span>mixed <var>$apiVersion</var> = self::DEFAULT_API_VERSION </span> )</code>
 
 		<div class="description short">
 			
@@ -143,13 +143,46 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$authHost</var></dt>
+					<dt><var>$clientId</var></dt>
 					<dd><code>string</code><br>$authHost</dd>
-					<dt><var>$apiHost</var></dt>
+					<dt><var>$clientSecret</var></dt>
 					<dd><code>string</code><br>$apiHost</dd>
-					<dt><var>$apiVersion</var></dt>
+					<dt><var>$authHost</var></dt>
 					<dd><code>string</code><br>$apiVersion</dd>
+					<dt><var>$apiHost</var></dt>
+					<dd></dd>
+					<dt><var>$apiVersion</var></dt>
+					<dd></dd>
 				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="labor" id="_labor">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_labor">#</a>
+		<code><a href="source-class-Crowdsdom.Crowdsdom.html#65-71" title="Go to source code">labor</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
 
 
 
@@ -173,7 +206,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Crowdsdom.html#8" title="Go to source code"><b>DEFAULT_AUTH_HOST</b></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#10" title="Go to source code"><b>DEFAULT_AUTH_HOST</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'https://account.crowdsdom.com'</span></code></td>
 		<td class="description"><div>
@@ -193,7 +226,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Crowdsdom.html#9" title="Go to source code"><b>DEFAULT_API_HOST</b></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#11" title="Go to source code"><b>DEFAULT_API_HOST</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'https://api.crowdsdom.com'</span></code></td>
 		<td class="description"><div>
@@ -213,7 +246,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Crowdsdom.html#10" title="Go to source code"><b>DEFAULT_API_VERSION</b></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#12" title="Go to source code"><b>DEFAULT_API_VERSION</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'v1'</span></code></td>
 		<td class="description"><div>
@@ -243,7 +276,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Crowdsdom.html#12-15" title="Go to source code"><var>$authHost</var></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#14-17" title="Go to source code"><var>$authHost</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -266,7 +299,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Crowdsdom.html#17-20" title="Go to source code"><var>$apiHost</var></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#19-22" title="Go to source code"><var>$apiHost</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -289,11 +322,80 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Crowdsdom.html#22-25" title="Go to source code"><var>$apiVersion</var></a>
+				<a href="source-class-Crowdsdom.Crowdsdom.html#24-27" title="Go to source code"><var>$apiVersion</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
 			<a href="#$apiVersion" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="apiClient" id="$apiClient">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Crowdsdom.html#29-32" title="Go to source code"><var>$apiClient</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$apiClient" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="auth" id="$auth">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Crowdsdom.Auth.html">Crowdsdom\Auth</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Crowdsdom.html#34-37" title="Go to source code"><var>$auth</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$auth" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="labor" id="$labor">
+		<td class="attributes"><code>
+			protected  
+			<code><a href="class-Crowdsdom.Labor.html">Crowdsdom\Labor</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Crowdsdom.html#39-42" title="Go to source code"><var>$labor</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$labor" class="anchor">#</a>
 
 			<div class="description short">
 				

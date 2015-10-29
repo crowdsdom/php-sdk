@@ -100,20 +100,6 @@
 
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Crowdsdom.Client.API.html"><span>Crowdsdom\Client\API</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by">
-<b><span>Crowdsdom\Auth</span></b>			
-			
-			
-		</dd>
-	</dl>
 
 
 
@@ -128,7 +114,7 @@
 		<b>Namespace:</b> <a href="namespace-Crowdsdom.html">Crowdsdom</a><br>
 		<b>Package:</b> Crowdsdom\Client<br>
 
-		<b>Located at</b> <a href="source-class-Crowdsdom.Auth.html#10-84" title="Go to source code">Auth.php</a><br>
+		<b>Located at</b> <a href="source-class-Crowdsdom.Auth.html#9-89" title="Go to source code">Auth.php</a><br>
 	</div>
 
 
@@ -146,7 +132,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Crowdsdom.Auth.html#36-47" title="Go to source code">__construct</a>( <span><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code> <var>$client</var></span>, <span>string <var>$clientId</var></span>, <span>string <var>$clientSecret</var></span> )</code>
+		<code><a href="source-class-Crowdsdom.Auth.html#40-51" title="Go to source code">__construct</a>( <span>string <var>$host</var></span>, <span>string <var>$clientId</var></span>, <span>string <var>$clientSecret</var></span> )</code>
 
 		<div class="description short">
 			
@@ -162,8 +148,8 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$client</var></dt>
-					<dd><code><code><a href="class-Crowdsdom.Client.Client.html">Crowdsdom\Client\Client</a></code></code><br>$client</dd>
+					<dt><var>$host</var></dt>
+					<dd><code>string</code><br>$host</dd>
 					<dt><var>$clientId</var></dt>
 					<dd><code>string</code><br>$clientId</dd>
 					<dt><var>$clientSecret</var></dt>
@@ -173,8 +159,6 @@
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Crowdsdom.Client.API.html#___construct">Crowdsdom\Client\API::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -190,7 +174,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAccessToken">#</a>
-		<code><a href="source-class-Crowdsdom.Auth.html#50-72" title="Go to source code">getAccessToken</a>( )</code>
+		<code><a href="source-class-Crowdsdom.Auth.html#54-77" title="Go to source code">getAccessToken</a>( )</code>
 
 		<div class="description short">
 			
@@ -219,7 +203,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_authMiddleware">#</a>
-		<code><a href="source-class-Crowdsdom.Auth.html#74-83" title="Go to source code">authMiddleware</a>( )</code>
+		<code><a href="source-class-Crowdsdom.Auth.html#79-88" title="Go to source code">authMiddleware</a>( )</code>
 
 		<div class="description short">
 			
@@ -252,7 +236,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Auth.html#17" title="Go to source code"><b>ENDPOINT</b></a>
+				<a href="source-class-Crowdsdom.Auth.html#16" title="Go to source code"><b>ENDPOINT</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'/oauth/token'</span></code></td>
 		<td class="description"><div>
@@ -272,7 +256,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Crowdsdom.Auth.html#18" title="Go to source code"><b>GRANT_TYPE</b></a>
+				<a href="source-class-Crowdsdom.Auth.html#17" title="Go to source code"><b>GRANT_TYPE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'client_credentials'</span></code></td>
 		<td class="description"><div>
@@ -295,6 +279,29 @@
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
+	<tr data-order="host" id="$host">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Crowdsdom.Auth.html#19-22" title="Go to source code"><var>$host</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$host" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="accessToken" id="$accessToken">
 		<td class="attributes"><code>
 			protected  
@@ -302,7 +309,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Auth.html#20-24" title="Go to source code"><var>$accessToken</var></a>
+				<a href="source-class-Crowdsdom.Auth.html#24-28" title="Go to source code"><var>$accessToken</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -329,7 +336,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Auth.html#26-29" title="Go to source code"><var>$clientId</var></a>
+				<a href="source-class-Crowdsdom.Auth.html#30-33" title="Go to source code"><var>$clientId</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -352,7 +359,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Crowdsdom.Auth.html#31-34" title="Go to source code"><var>$clientSecret</var></a>
+				<a href="source-class-Crowdsdom.Auth.html#35-38" title="Go to source code"><var>$clientSecret</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -370,14 +377,6 @@
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Crowdsdom.Client.API.html#properties">Crowdsdom\Client\API</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Crowdsdom.Client.API.html#$client"><var>$client</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
