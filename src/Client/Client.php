@@ -3,6 +3,7 @@
 namespace Crowdsdom\Client;
 
 use Crowdsdom\Auth;
+use Crowdsdom\Crowdsdom;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\RequestInterface;
 
@@ -24,18 +25,33 @@ class Client
     protected $version;
 
     /**
+     * @var Auth
+     */
+    protected $auth;
+
+    /**
      * Client constructor.
      * @param string $host
      * @param string $version
      * @param array $guzzleOptions
      */
-    public function __construct($host, $version = '', array $guzzleOptions = [])
-    {
+    public function __construct(
+        Auth &$auth,
+        $host,
+        $version = Crowdsdom::DEFAULT_API_VERSION,
+        array $guzzleOptions = []
+    ) {
+        $this->auth = $auth;
         $this->host = $host;
         $this->version = $version;
 
+        $stack = HandlerStack::create();
+        $stack->push($auth->authMiddleware());
+        $stack->push(static::versionMiddleware($version));
+
         $this->guzzle = new \GuzzleHttp\Client(array_merge([
-            'base_uri' => $host
+            'base_uri' => $host,
+            'handler' => $stack
         ], $guzzleOptions));
     }
 
@@ -45,24 +61,6 @@ class Client
     public function getGuzzle()
     {
         return $this->guzzle;
-    }
-
-    /**
-     * @param Auth $auth
-     * @param string $host
-     * @param string $version
-     * @param array $guzzleOptions
-     * @return Client
-     */
-    public static function makeByAuth(Auth $auth, $host, $version = '', array $guzzleOptions = [])
-    {
-        $stack = HandlerStack::create();
-        $stack->push($auth->authMiddleware());
-        $stack->push(static::versionMiddleware($version));
-
-        return new Client($host, $version, array_merge([
-            'handler' => $stack
-        ], $guzzleOptions));
     }
 
     public static function versionMiddleware($version)

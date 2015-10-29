@@ -2,20 +2,24 @@
 
 namespace Crowdsdom;
 
-use Crowdsdom\Client\API;
-use Crowdsdom\Client\Client;
 use Crowdsdom\Client\Exceptions\AuthException;
+use GuzzleHttp\Client as GuzzleClient;
 use Psr\Http\Message\RequestInterface;
 
 /**
  * Class Auth
  * @package Crowdsdom\Client
  */
-class Auth extends API
+class Auth
 {
 
     const ENDPOINT = '/oauth/token';
     const GRANT_TYPE = 'client_credentials';
+
+    /**
+     * @var string
+     */
+    protected $host;
 
     /**
      * TODO: adapt an oauth2 library
@@ -35,13 +39,13 @@ class Auth extends API
 
     /**
      * Auth constructor.
-     * @param Client $client
+     * @param string $host
      * @param string $clientId
      * @param string $clientSecret
      */
-    public function __construct(Client $client, $clientId, $clientSecret)
+    public function __construct($host, $clientId, $clientSecret)
     {
-        parent::__construct($client);
+        $this->host = $host;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
     }
@@ -50,23 +54,24 @@ class Auth extends API
     public function getAccessToken()
     {
         // lazy load
-        if (isset($this->accessToken)) {
-            return $this->accessToken;
+        if (!isset($this->accessToken)) {
+            $guzzle = new GuzzleClient([
+                'verify' => !getenv('CROWDSDOM_TESTING')
+            ]);
+            $response = $guzzle->request('POST', $this->host . self::ENDPOINT, [
+                'json' => [
+                    'grant_type' => self::GRANT_TYPE,
+                    'client_id' => $this->clientId,
+                    'client_secret' => $this->clientSecret,
+                ]
+            ]);
+
+            if ($response->getStatusCode() !== 200) {
+                throw AuthException::make($response);
+            }
+
+            $this->accessToken = json_decode($response->getBody()->getContents(), true);
         }
-
-        $response = $this->client->getGuzzle()->request('POST', self::ENDPOINT, [
-            'json' => [
-                'grant_type' => self::GRANT_TYPE,
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-            ]
-        ]);
-
-        if ($response->getStatusCode() !== 200) {
-            throw AuthException::make($response);
-        }
-
-        $this->accessToken = json_decode($response->getBody()->getContents(), true);
 
         return $this->accessToken;
     }

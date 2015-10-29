@@ -1,0 +1,12 @@
+{
+  "title": "微博情感分析",
+  "description": "判断博文中所表达的情绪",
+  "reward": {
+    "amount": 0.1,
+    "formattedPrice": "0.10元"
+  },
+  "keywords": [
+    "情感分析",
+    "微博"
+  ]
+}

@@ -3,6 +3,7 @@
 namespace Crowdsdom\Labor\Models\Base;
 
 use Crowdsdom\Client\Client;
+use GuzzleHttp\Psr7\Response;
 
 abstract class Model
 {
@@ -12,6 +13,19 @@ abstract class Model
      * @var Client
      */
     protected $client;
+
+    /**
+     * @var Response
+     */
+    protected $response;
+
+    /**
+     * @return Response
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
 
     /**
      * Model constructor.
@@ -28,10 +42,10 @@ abstract class Model
      */
     public function create(array $data)
     {
-        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT, [
+        $this->response = $this->client->getGuzzle()->request('POST', static::ENDPOINT, [
             'json' => $data
         ]);
-        return json_decode($response->getBody()->getContents(), true);
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 
     /**
@@ -40,8 +54,8 @@ abstract class Model
      */
     public function find()
     {
-        $response = $this->client->getGuzzle()->request('GET', static::ENDPOINT);
-        return json_decode($response->getBody()->getContents(), true);
+        $this->response = $this->client->getGuzzle()->request('GET', static::ENDPOINT);
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 
     /**
@@ -51,7 +65,7 @@ abstract class Model
      */
     public function findById($id)
     {
-        $response = $this->client->getGuzzle()->request('GET', static::ENDPOINT . "/$id");
-        return json_decode($response->getBody()->getContents(), true);
+        $this->response = $this->client->getGuzzle()->request('GET', static::ENDPOINT . "/$id");
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 }

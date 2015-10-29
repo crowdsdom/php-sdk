@@ -3,8 +3,6 @@
 namespace Crowdsdom\Tests\Integration;
 
 use Crowdsdom\Auth;
-use Crowdsdom\Client\Client;
-use Crowdsdom\Crowdsdom;
 
 class AuthTest extends TestCase
 {
@@ -13,6 +11,13 @@ class AuthTest extends TestCase
      * @var Auth
      */
     protected $auth;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->auth = $this->getAuth();
+    }
 
     public function testGetAccessToken()
     {

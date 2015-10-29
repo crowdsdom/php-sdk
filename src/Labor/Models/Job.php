@@ -6,14 +6,9 @@ class Job extends Base\Job
 {
     const ENDPOINT = '/Jobs';
 
-    /**
-     * @param $id
-     * @return array|null
-     * @throws \RuntimeException
-     */
-    public function accept($id)
+    public function tasks($id)
     {
-        $response = $this->client->getGuzzle()->request('POST', static::ENDPOINT . "/{$id}/accept", []);
-        return json_decode($response->getBody()->getContents(), true);
+        $this->response = $this->client->getGuzzle()->request('GET', static::ENDPOINT . "/{$id}/tasks", []);
+        return json_decode($this->response->getBody()->getContents(), true);
     }
 }

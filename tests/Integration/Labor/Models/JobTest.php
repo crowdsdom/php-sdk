@@ -7,15 +7,14 @@ use Crowdsdom\Labor\Models\Job;
 class JobTest extends ModelTest
 {
     protected $model = Job::class;
+    protected $data = 'job';
 
-    public function testAccept()
+    public function testTasks()
     {
-        try {
-            $job = new Job($this->client);
-            $job->accept("abc");
-        } catch (\GuzzleHttp\Exception\ClientException $exception) {
-            $this->assertEquals(401, $exception->getResponse()->getStatusCode());
-        }
+        $job = new Job($this->client);
+        $tasks = $job->tasks($this->createModel['id']);
+        $this->assertInternalType('array', $tasks);
+        $this->assertEquals(200, $job->getResponse()->getStatusCode());
     }
 
 }

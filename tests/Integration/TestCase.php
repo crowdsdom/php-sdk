@@ -39,19 +39,28 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected $client;
 
+    /**
+     * @var Auth
+     */
+    protected $auth;
+
     public function setUp()
     {
-        parent::setUp();
         $this->getEnv();
+    }
 
+    protected function getAuth()
+    {
+        return $this->auth = new Auth($this->authHost, $this->clientId, $this->clientSecret);
+    }
+
+    protected function getClient()
+    {
         if (!isset($this->auth)) {
-            $authClient = new Client($this->authHost, [
-                'verify' => false
-            ]);
-            $this->auth = new Auth($authClient, $this->clientId, $this->clientSecret);
+            $this->auth = $this->getAuth();
         }
 
-        $this->client = Client::makeByAuth($this->auth, $this->apiHost, Crowdsdom::DEFAULT_API_VERSION, [
+        return $this->client = new Client($this->auth, $this->apiHost, Crowdsdom::DEFAULT_API_VERSION, [
             'verify' => false
         ]);
     }
