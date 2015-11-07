@@ -36,7 +36,7 @@ class Client
      * @param array $guzzleOptions
      */
     public function __construct(
-        Auth &$auth,
+        Auth $auth,
         $host,
         $version = Crowdsdom::DEFAULT_API_VERSION,
         array $guzzleOptions = []
